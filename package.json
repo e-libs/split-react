@@ -1,10 +1,12 @@
 {
-  "name": "splitio-react",
-  "version": "0.0.1",
+  "name": "split-react",
+  "version": "0.0.2",
   "description": "An alternative React solution for Split.io",
-  "repository": "git@github.com:e-libs/splitio-react.git",
   "author": "Eric Marques <emarques3@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/split-react"
+  },
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}' --config .eslintrc.js",
     "build": "yarn rimraf ./build && tsc -p tsconfig.json"
@@ -17,10 +19,10 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.0",
-    "eslint": "^7.16.0",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"
   }
