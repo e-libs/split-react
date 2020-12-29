@@ -1,4 +1,4 @@
-import { IPubSub, PubSubAction, PubSubListener } from './types';
+import type { IPubSub, PubSubAction, PubSubListener } from 'PubSub/types';
 
 export class PubSub<T> implements IPubSub<T> {
   private events: PubSubListener<T>[] = [];
@@ -13,11 +13,11 @@ export class PubSub<T> implements IPubSub<T> {
 
   emit(type: string, value: T): void {
     this.events.forEach((event) => {
-      event.type === type && event.action(value);
-    })
+      if (event.type === type) event.action(value);
+    });
   }
 
   off(id: string): void {
     this.events = this.events.filter((event) => event.id !== id);
-  } 
+  }
 }
