@@ -5,10 +5,6 @@
   "repository": "git@github.com:e-libs/splitio-react.git",
   "author": "Eric Marques <emarques3@gmail.com>",
   "license": "MIT",
-  "publishConfig": {
-    "access": "restricted"
-  },
-  "private": true,
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}' --config .eslintrc.js",
     "build": "yarn rimraf ./build && tsc -p tsconfig.json"
