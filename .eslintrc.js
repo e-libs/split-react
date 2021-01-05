@@ -42,7 +42,6 @@ module.exports = {
     'import/extensions': 'off',
     'prefer-arrow-callback': 'off',
     'import/prefer-default-export': 'off',
-    // '@typescript-eslint/no-var-requires': false,
     'no-bitwise': 'off',
     'no-fallthrough': 'off',
     'class-methods-use-this': 'off',
