@@ -7,7 +7,7 @@ export type PubSubListener<T> = {
 };
 
 export interface IPubSub<T> {
-  on(id: string, type: string, action: PubSubAction<T>): void;
+  on(type: string, id: string, action: PubSubAction<T>): void;
   emit(type: string, value: T): void;
   off(id: string): void;
 }

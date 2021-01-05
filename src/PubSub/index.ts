@@ -1,13 +1,13 @@
-import type { IPubSub, PubSubAction, PubSubListener } from 'PubSub/types';
+import type { IPubSub, PubSubAction, PubSubListener } from './types';
 
 export class PubSub<T> implements IPubSub<T> {
   private events: PubSubListener<T>[] = [];
 
-  get listeners() {
+  get listeners(): PubSubListener<T>[] {
     return this.events;
   }
 
-  on(id: string, type: string, action: PubSubAction<T>): void {
+  on(type: string, id: string, action: PubSubAction<T>): void {
     this.events.push({ id, type, action });
   }
 
