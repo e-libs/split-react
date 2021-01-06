@@ -1,6 +1,6 @@
 {
   "name": "split-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An alternative React solution for Split.io",
   "author": "Eric Marques <emarques3@gmail.com>",
   "license": "MIT",

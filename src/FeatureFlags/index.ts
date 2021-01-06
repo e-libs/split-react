@@ -1,6 +1,11 @@
 import { PubSub } from '../PubSub';
 import type { IPubSub } from '../PubSub/types';
 
+/**
+ * The main FeatureFlags class. It's meant to be used as a singleton, as it will control
+ * the single instance of Split's client, and orchestrate the flags values to emit the events
+ * of the changed ones only, avoid unnecessary updates
+ */
 export class FeatureFlags {
   protected client: SplitIO.IClient | undefined;
 
@@ -12,16 +17,30 @@ export class FeatureFlags {
 
   protected splitConfig: SplitIO.IBrowserSettings;
 
+  /**
+   * Creates a new FeatureFlags instance
+   * @param config The SplitIO config - see https://github.com/splitio/javascript-client/blob/development/types/splitio.d.ts#L807
+   */
   constructor(config: SplitIO.IBrowserSettings) {
     this.splitConfig = config;
     this.events = new PubSub<string>();
     this.splits = {};
   }
 
+  /**
+   * Adds an event listener to the FeatureFlags instance
+   * @param split the event/split name
+   * @param eventId the unique event/split ID
+   * @param callback The action callback to be emitted
+   */
   on(split: string, eventId: string, callback: (value: string) => void): void {
     this.events.on(split, eventId, callback);
   }
 
+  /**
+   * Removes an event from the FeatureFlags collection
+   * @param eventId The unique ID of the event to be removed
+   */
   off(eventId: string): void {
     this.events.off(eventId);
   }
@@ -40,6 +59,10 @@ export class FeatureFlags {
     };
   }
 
+  /**
+   * Initializes the FeatureFlags instance with a user key and client instance
+   * @param userKey the user key to be added as its main identifier on Split
+   */
   async setup(userKey: string): Promise<void> {
     if (process.env.NODE_ENV === 'test') return;
 
@@ -90,6 +113,12 @@ export class FeatureFlags {
     return client;
   }
 
+  /**
+   * Gets a split (flag) value
+   * @param split The split (flag) name to be evaluated
+   * @param defaultValue The default value to be returned, in case it's failed or not ready
+   * @returns The split (flag) value or the default one
+   */
   getSplit(split: string, defaultValue: string): string {
     return this.client ? this.client.getTreatment(split) : defaultValue;
   }

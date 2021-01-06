@@ -1,5 +1,8 @@
 import type { IPubSub, PubSubAction, PubSubListener } from './types';
 
+/**
+ * The basic PubSub implementation
+ */
 export class PubSub<T> implements IPubSub<T> {
   private events: PubSubListener<T>[] = [];
 

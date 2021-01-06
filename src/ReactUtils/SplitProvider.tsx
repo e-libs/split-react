@@ -2,6 +2,11 @@ import React from 'react';
 import { FeatureFlags } from '../FeatureFlags';
 import { SplitContext } from './SplitContext';
 
+/**
+ * The Split Provider to wrap a React application
+ * @param children The children components
+ * @param config The Split config to be used by Split SDK. It must contain at least the authorizationKey and the user key
+ */
 export const SplitProvider = ({
   children,
   config,
