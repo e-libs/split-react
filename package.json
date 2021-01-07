@@ -6,12 +6,12 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}' --config .eslintrc.js",
-    "build": "yarn rimraf ./build && tsc -p tsconfig.json"
+    "build": "yarn rimraf ./dist && tsc -p tsconfig.json"
   },
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "build/**/*"
+    "dist/**/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0",
