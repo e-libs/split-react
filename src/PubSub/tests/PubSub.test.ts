@@ -1,5 +1,5 @@
-import { PubSub } from '../';
 import { v4 as uuid } from 'uuid';
+import { PubSub } from '..';
 
 describe('The PubSub', () => {
   let pubSub: PubSub<string>;
@@ -7,7 +7,7 @@ describe('The PubSub', () => {
 
   beforeEach(() => {
     pubSub = new PubSub<string>();
-  })
+  });
 
   it('sets events correctly', () => {
     expect(pubSub.listeners.length).toBe(0);
@@ -30,7 +30,7 @@ describe('The PubSub', () => {
     pubSub.on(someEvent.type, someEvent.id, someEvent.action);
     pubSub.on(someEvent.type, uuid(), someEvent.action);
     pubSub.on(anotherEvent.type, anotherEvent.id, anotherEvent.action);
-    
+
     expect(pubSub.listeners.length).toBe(3);
 
     expect(pubSub.listeners.filter(({ type }) => type === someEvent.type).length).toBe(2);
@@ -41,7 +41,7 @@ describe('The PubSub', () => {
     const values: string[] = [];
     const otherValues: string[] = [];
     const TYPE = 'type';
-    
+
     const firstEvent = {
       type: TYPE,
       id: 'id1',
@@ -82,7 +82,7 @@ describe('The PubSub', () => {
     const values: string[] = [];
     const otherValues: string[] = [];
     const TYPE = 'type';
-    
+
     const firstEvent = {
       type: TYPE,
       id: 'id1',
@@ -107,5 +107,5 @@ describe('The PubSub', () => {
 
     expect(values).toContain('another_message');
     expect(otherValues).not.toContain('another_message');
-  })
+  });
 });

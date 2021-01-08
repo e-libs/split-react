@@ -20,9 +20,6 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'prettier'],
-  parserOptions: {
-    project: join(__dirname, 'tsconfig.json'),
-  },
   settings: {
     react: {
       version: 'detect',
@@ -48,6 +45,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-use-before-define': 'off',
     'global-require': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-unused-vars': [
       'error',
