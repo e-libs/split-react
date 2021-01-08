@@ -1,0 +1,13 @@
+# dependencies
+/**/node_modules
+
+**/dist
+
+.eslintcache
+
+# debug
+yarn-debug.log*
+yarn-error.log*
+
+**/.idea
+**/.vscode
