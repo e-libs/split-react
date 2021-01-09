@@ -1,6 +1,7 @@
 # splitio-react
 > An alternative React solution for [Split.io](https://www.split.io/).
 
+
 ## How to Install
 
 ```
@@ -32,4 +33,77 @@ Instead of working on their own repository, this library has the goals of not on
 
 What this library does is basically creating a `SplitProvider` to wrap your application with, using a simple [Pub/Sub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) mechanism under the hood, which will only dispatch update events to the hooks that are listening to the specific flags that have changed. Simple as that!
 
-... to be continued
+## Example
+
+Here's a simple usage of `split-react`:
+- [https://github.com/emarques3/test-split-react](https://github.com/emarques3/test-split-react)
+
+### Step by Step
+
+1. Wrap your app with the `SplitProvider`
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { SplitProvider } from 'split-react';
+import { config } from './split/config';
+
+ReactDOM.render(
+    <SplitProvider config={config}>
+      <App />
+    </SplitProvider>,
+  document.getElementById('root')
+);
+```
+2. Use your Split config, the only required fields are the `authorizationKey` and `key`
+```typescript
+import { SplitConfig } from 'split-react';
+
+const key = '[SOME_USER_KEY]';
+
+export const config: SplitConfig = {
+  core: {
+    authorizationKey: '[YOUR_SPLIT_KEY]',
+    key,
+  },
+};
+
+```
+3. In this example, `App.tsx` is calling this `Test.tsx`, just for the sake of separating the code
+```tsx
+import React from 'react';
+import './App.css';
+import { Test } from './components/Test';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Test splitName="test1" />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+```
+4. Call the `useSplit` hook to evaluate your flag
+```tsx
+import React from 'react';
+import { useSplit } from 'split-react';
+
+export const Test = ({ splitName }: { splitName: string }) => {
+  const split = useSplit(splitName, false);
+  const color = split ? '#00FF00' : '#FF0000'
+  return (
+    <h1>The flag <i>{splitName}</i> is <strong style={{ color }}>{split ? 'ON' : 'OFF'}</strong></h1>
+  );
+};
+
+```
+
+There you go!
+
+Now your React application will avoid unnecessary re-renders on components hooked with Split flags.
