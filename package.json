@@ -1,14 +1,31 @@
 {
   "name": "split-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An alternative React solution for Split.io",
-  "author": "Eric Marques <emarques3@gmail.com>",
+  "author": "e-libs",
+  "contributors": [
+    {
+      "name": "Eric Marques",
+      "email": "eric@e-libs.dev",
+      "url": "https://github.com/emarques3"
+    }
+  ],
+  "homepage": "https://github.com/e-libs/split-react#readme",
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}' --config .eslintrc.js",
     "build": "yarn rimraf ./dist && tsc -p tsconfig.json",
     "test": "jest -i -c jest.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-libs/split-react"
+  },
+  "keywords": [
+    "splitio",
+    "split",
+    "react"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
