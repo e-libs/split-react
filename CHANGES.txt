@@ -1,0 +1,6 @@
+0.0.6 (January 17th, 2021)
+  - Adding 'withSplit' High Order Component (HOC)
+  - Updating README.md file, including gif animation
+
+0.0.1 to 0.0.5 (January 8th, 2021)
+  - Getting library ready
