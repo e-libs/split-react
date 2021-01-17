@@ -7,8 +7,7 @@ export const withSplit = <T extends Record<string, unknown>>(
   split: string,
   defaultValue: boolean,
 ) => (props: T) => {
-  console.log('FLAG BEING EVALUATED', split);
-
-  const on = useSplit(split, defaultValue);
-  return <Component splitFlagOn={on} {...props} />;
+  const splitFlagOn = useSplit(split, defaultValue);
+  const newProps = { ...props, splitFlagOn };
+  return <Component {...newProps} />;
 };
