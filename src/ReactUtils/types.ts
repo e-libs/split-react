@@ -12,3 +12,10 @@ export type FeatureFlagsContext = {
  * A wrapper to export Split's IBrowserSettings
  */
 export type SplitConfig = SplitIO.IBrowserSettings;
+
+/**
+ * The props types for WithSplit HOC
+ */
+export type WithSplitProps = {
+  splitFlagOn: boolean;
+};

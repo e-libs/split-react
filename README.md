@@ -36,7 +36,9 @@ What this library does is basically creating a `SplitProvider` to wrap your appl
 ## Example
 
 Here's a simple usage of `split-react`:
-- [https://github.com/emarques3/test-split-react](https://github.com/emarques3/test-split-react)
+> [https://github.com/emarques3/test-split-react](https://github.com/emarques3/test-split-react)
+
+There you'll find two basic usage of this lib, with `useSplit` [hook](https://reactjs.org/docs/hooks-intro.html), and `withSplit` [HOC](https://reactjs.org/docs/higher-order-components.html).
 
 ### Step by Step
 
@@ -50,9 +52,9 @@ import { SplitProvider } from 'split-react';
 import { config } from './split/config';
 
 ReactDOM.render(
-    <SplitProvider config={config}>
-      <App />
-    </SplitProvider>,
+  <SplitProvider config={config}>
+    <App />
+  </SplitProvider>,
   document.getElementById('root')
 );
 ```
@@ -71,25 +73,29 @@ export const config: SplitConfig = {
 
 ```
 3. In this example, `App.tsx` is calling this `Test.tsx`, just for the sake of separating the code
+
 ```tsx
 import React from 'react';
 import './App.css';
 import { Test } from './components/Test';
+// import TestHOC from './components/TestHOC';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <Test splitName="test1" />
+        {/* <TestHOC /> */}
       </header>
     </div>
   );
 }
 
 export default App;
-
 ```
+
 4. Call the `useSplit` hook to evaluate your flag
+
 ```tsx
 import React from 'react';
 import { useSplit } from 'split-react';
@@ -101,9 +107,13 @@ export const Test = ({ splitName }: { splitName: string }) => {
     <h1>The flag <i>{splitName}</i> is <strong style={{ color }}>{split ? 'ON' : 'OFF'}</strong></h1>
   );
 };
-
 ```
 
-There you go!
+5. If you prefer, you may use the HOC instead of the Hook, as exemplified with `TestHOC` component. To do so, simply uncomment those lines above (on `App.tsx`) to start using it.
+
+## See it in action 🎥
+![](src/flag.gif)
+
+### There you go!
 
 Now your React application will avoid unnecessary re-renders on components hooked with Split flags.
