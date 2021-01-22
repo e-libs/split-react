@@ -26,7 +26,7 @@ What this library does is basically creating a `SplitProvider` to wrap your appl
 
 ## The Gist
 
-1. Wrap your app with the `SplitProvider`
+1 - Wrap your app with the `SplitProvider`
 
 ```tsx
 import React from 'react';
@@ -44,7 +44,7 @@ ReactDOM.render(
 );
 ```
 
-2. Use your Split config, the only required fields are the `authorizationKey` and `key`
+2 - Use your Split config, the only required fields are the `authorizationKey` and `key`
 
 ```typescript
 import { SplitConfig } from 'split-react';
@@ -60,7 +60,7 @@ export const config: SplitConfig = {
 
 ```
 
-3. In this example, `App.tsx` is calling this `Test.tsx`, just for the sake of separating the code
+3 - In this example, `App.tsx` is calling this `Test.tsx`, just for the sake of separating the code
 
 ```tsx
 import React from 'react';
@@ -82,7 +82,7 @@ function App() {
 export default App;
 ```
 
-4. Call the `useSplit` hook to evaluate your flag
+4 -  Call the `useSplit` hook to evaluate your flag
 
 ```tsx
 import React from 'react';
@@ -97,7 +97,7 @@ export const Test = ({ splitName }: { splitName: string }) => {
 };
 ```
 
-5. If you prefer, you may use the HOC instead of the Hook, as exemplified with `TestHOC` component. To do so, simply uncomment those lines above (on `App.tsx`) to start using it.
+5 - If you prefer, you may use the HOC instead of the Hook, as exemplified with `TestHOC` component. To do so, simply uncomment those lines above (on `App.tsx`) to start using it.
 
 You're all set! Now enjoy it, and see it in action  🎥
 
