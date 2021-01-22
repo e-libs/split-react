@@ -27,6 +27,7 @@ What this library does is basically creating a `SplitProvider` to wrap your appl
 ## The Gist
 
 1. Wrap your app with the `SplitProvider`
+
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -44,6 +45,7 @@ ReactDOM.render(
 ```
 
 2. Use your Split config, the only required fields are the `authorizationKey` and `key`
+
 ```typescript
 import { SplitConfig } from 'split-react';
 
@@ -57,6 +59,7 @@ export const config: SplitConfig = {
 };
 
 ```
+
 3. In this example, `App.tsx` is calling this `Test.tsx`, just for the sake of separating the code
 
 ```tsx
